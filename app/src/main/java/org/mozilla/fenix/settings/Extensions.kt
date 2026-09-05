@@ -14,10 +14,12 @@ import androidx.annotation.StringRes
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toDrawable
+import androidx.core.widget.TextViewCompat
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceGroupAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.R as materialR
 import mozilla.components.concept.engine.permission.SitePermissions
 import mozilla.components.support.ktx.android.content.res.resolveAttribute
 import mozilla.components.support.ktx.android.view.putCompoundDrawablesRelative
@@ -76,6 +78,10 @@ fun RadioButton.setStartCheckedIndicator() {
         setBounds(0, 0, intrinsicWidth, intrinsicHeight)
     }
     putCompoundDrawablesRelative(start = buttonDrawable)
+    TextViewCompat.setCompoundDrawableTintList(
+        this,
+        ContextCompat.getColorStateList(context, materialR.color.m3_radiobutton_button_tint),
+    )
 }
 
 /**

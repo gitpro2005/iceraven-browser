@@ -1,0 +1,270 @@
+diff --git a/components/ui/colors/src/main/java/mozilla/components/ui/colors/NovaColors.kt b/components/ui/colors/src/main/java/mozilla/components/ui/colors/NovaColors.kt
+index 1a62639..ca43ee3 100644
+--- a/components/ui/colors/src/main/java/mozilla/components/ui/colors/NovaColors.kt
++++ b/components/ui/colors/src/main/java/mozilla/components/ui/colors/NovaColors.kt
+@@ -4,65 +4,79 @@
+ 
+ package mozilla.components.ui.colors
+ 
++import android.content.res.Resources
++import android.os.Build
+ import androidx.compose.ui.graphics.Color
+ 
+ /**
+  * Colors from the Nova design system primitives.
+  */
+ object NovaColors {
++    private fun dynamicColor(resId: Int, fallback: Color): Color {
++        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
++            try {
++                Color(Resources.getSystem().getColor(resId, null))
++            } catch (e: Throwable) {
++                fallback
++            }
++        } else {
++            fallback
++        }
++    }
++
+     val White = Color(0xFFFFFFFF)
+     val Black = Color(0xFF000000)
+     val BlackA50 = Color(0x80000000)
+ 
+-    val Gray0 = Color(0xFFFCFBFF)
+-    val Gray5 = Color(0xFFF7F6FB)
+-    val Gray10 = Color(0xFFEFEDF2)
+-    val Gray15 = Color(0xFFE3E2E7)
+-    val Gray20 = Color(0xFFD6D5DA)
+-    val Gray25 = Color(0xFFC7C6CB)
+-    val Gray30 = Color(0xFFB7B6BA)
+-    val Gray35 = Color(0xFFA6A4A9)
+-    val Gray40 = Color(0xFF949297)
+-    val Gray45 = Color(0xFF817F84)
+-    val Gray45A80 = Color(0xCC817F84)
+-    val Gray45A81 = Color(0xCF817F84)
+-    val Gray50 = Color(0xFF67666A)
+-    val Gray55 = Color(0xFF515054)
+-    val Gray60 = Color(0xFF3F3E42)
+-    val Gray65 = Color(0xFF312F33)
+-    val Gray70 = Color(0xFF252428)
+-    val Gray75 = Color(0xFF1D1B1F)
+-    val Gray80 = Color(0xFF171519)
+-    val Gray85 = Color(0xFF131215)
+-    val Gray90 = Color(0xFF121114)
++    val Gray0 = dynamicColor(android.R.color.system_neutral1_0, Color(0xFFFCFBFF))
++    val Gray5 = dynamicColor(android.R.color.system_neutral1_50, Color(0xFFF7F6FB))
++    val Gray10 = dynamicColor(android.R.color.system_neutral1_100, Color(0xFFEFEDF2))
++    val Gray15 = dynamicColor(android.R.color.system_neutral1_200, Color(0xFFE3E2E7))
++    val Gray20 = dynamicColor(android.R.color.system_neutral1_300, Color(0xFFD6D5DA))
++    val Gray25 = dynamicColor(android.R.color.system_neutral1_400, Color(0xFFC7C6CB))
++    val Gray30 = dynamicColor(android.R.color.system_neutral1_500, Color(0xFFB7B6BA))
++    val Gray35 = dynamicColor(android.R.color.system_neutral1_500, Color(0xFFA6A4A9))
++    val Gray40 = dynamicColor(android.R.color.system_neutral1_600, Color(0xFF949297))
++    val Gray45 = dynamicColor(android.R.color.system_neutral1_600, Color(0xFF817F84))
++    val Gray45A80 = Gray45.copy(alpha = 0.80f)
++    val Gray45A81 = Gray45.copy(alpha = 0.81f)
++    val Gray50 = dynamicColor(android.R.color.system_neutral1_600, Color(0xFF67666A))
++    val Gray55 = dynamicColor(android.R.color.system_neutral1_700, Color(0xFF515054))
++    val Gray60 = dynamicColor(android.R.color.system_neutral1_700, Color(0xFF3F3E42))
++    val Gray65 = dynamicColor(android.R.color.system_neutral1_800, Color(0xFF312F33))
++    val Gray70 = dynamicColor(android.R.color.system_neutral1_800, Color(0xFF252428))
++    val Gray75 = dynamicColor(android.R.color.system_neutral1_900, Color(0xFF1D1B1F))
++    val Gray80 = dynamicColor(android.R.color.system_neutral1_900, Color(0xFF171519))
++    val Gray85 = dynamicColor(android.R.color.system_neutral1_1000, Color(0xFF131215))
++    val Gray90 = dynamicColor(android.R.color.system_neutral1_1000, Color(0xFF121114))
+ 
+-    val VioletDesaturated0 = Color(0xFFF2F0F8)
+-    val VioletDesaturated0A70 = Color(0xB2F2F0F8)
+-    val VioletDesaturated10 = Color(0xFFE2DCF2)
+-    val VioletDesaturated20 = Color(0xFFCAC1E4)
+-    val VioletDesaturated30 = Color(0xFFB0A3D2)
+-    val VioletDesaturated30A55 = Color(0x8CB0A3D2)
+-    val VioletDesaturated40 = Color(0xFF9484BD)
+-    val VioletDesaturated50 = Color(0xFF75669F)
+-    val VioletDesaturated50A86 = Color(0xDB75669F)
+-    val VioletDesaturated60 = Color(0xFF584A7D)
+-    val VioletDesaturated70 = Color(0xFF3E315F)
+-    val VioletDesaturated80 = Color(0xFF281D44)
+-    val VioletDesaturated90 = Color(0xFF180E30)
+-    val VioletDesaturated90A50 = Color(0x80180E30)
+-    val VioletDesaturated90A70 = Color(0xB2180E30)
++    val VioletDesaturated0 = dynamicColor(android.R.color.system_accent2_50, Color(0xFFF2F0F8))
++    val VioletDesaturated0A70 = VioletDesaturated0.copy(alpha = 0.70f)
++    val VioletDesaturated10 = dynamicColor(android.R.color.system_accent2_100, Color(0xFFE2DCF2))
++    val VioletDesaturated20 = dynamicColor(android.R.color.system_accent2_200, Color(0xFFCAC1E4))
++    val VioletDesaturated30 = dynamicColor(android.R.color.system_accent2_300, Color(0xFFB0A3D2))
++    val VioletDesaturated30A55 = VioletDesaturated30.copy(alpha = 0.55f)
++    val VioletDesaturated40 = dynamicColor(android.R.color.system_accent2_400, Color(0xFF9484BD))
++    val VioletDesaturated50 = dynamicColor(android.R.color.system_accent2_500, Color(0xFF75669F))
++    val VioletDesaturated50A86 = VioletDesaturated50.copy(alpha = 0.86f)
++    val VioletDesaturated60 = dynamicColor(android.R.color.system_accent2_600, Color(0xFF584A7D))
++    val VioletDesaturated70 = dynamicColor(android.R.color.system_accent2_700, Color(0xFF3E315F))
++    val VioletDesaturated80 = dynamicColor(android.R.color.system_accent2_800, Color(0xFF281D44))
++    val VioletDesaturated90 = dynamicColor(android.R.color.system_accent3_700, Color(0xFF180E30))
++    val VioletDesaturated90A50 = VioletDesaturated90.copy(alpha = 0.50f)
++    val VioletDesaturated90A70 = VioletDesaturated90.copy(alpha = 0.70f)
+ 
+-    val Violet0 = Color(0xFFF5ECFF)
+-    val Violet10 = Color(0xFFE5D6FF)
+-    val Violet10A50 = Color(0x80E5D6FF)
+-    val Violet20 = Color(0xFFCDB7FF)
+-    val Violet30 = Color(0xFFB393FF)
+-    val Violet40 = Color(0xFF956EFF)
+-    val Violet50 = Color(0xFF764EDD)
+-    val Violet60 = Color(0xFF5939A8)
+-    val Violet70 = Color(0xFF3E2976)
+-    val Violet80 = Color(0xFF271C48)
+-    val Violet90 = Color(0xFF161423)
++    val Violet0 = dynamicColor(android.R.color.system_accent3_100, Color(0xFFF5ECFF))
++    val Violet10 = dynamicColor(android.R.color.system_accent1_100, Color(0xFFE5D6FF))
++    val Violet10A50 = Violet10.copy(alpha = 0.50f)
++    val Violet20 = dynamicColor(android.R.color.system_accent1_200, Color(0xFFCDB7FF))
++    val Violet30 = dynamicColor(android.R.color.system_accent1_300, Color(0xFFB393FF))
++    val Violet40 = dynamicColor(android.R.color.system_accent1_400, Color(0xFF956EFF))
++    val Violet50 = dynamicColor(android.R.color.system_accent1_500, Color(0xFF764EDD))
++    val Violet60 = dynamicColor(android.R.color.system_accent1_700, Color(0xFF5939A8))
++    val Violet70 = dynamicColor(android.R.color.system_accent1_600, Color(0xFF3E2976))
++    val Violet80 = dynamicColor(android.R.color.system_accent1_800, Color(0xFF271C48))
++    val Violet90 = dynamicColor(android.R.color.system_accent1_900, Color(0xFF161423))
+ 
+     val Purple0 = Color(0xFFFAEBFF)
+     val Purple10 = Color(0xFFF1D0FF)
+diff --git a/components/ui/colors/src/main/java/mozilla/components/ui/colors/PhotonColors.kt b/components/ui/colors/src/main/java/mozilla/components/ui/colors/PhotonColors.kt
+index 4cdb22b..adce281 100644
+--- a/components/ui/colors/src/main/java/mozilla/components/ui/colors/PhotonColors.kt
++++ b/components/ui/colors/src/main/java/mozilla/components/ui/colors/PhotonColors.kt
+@@ -4,6 +4,8 @@
+ 
+ package mozilla.components.ui.colors
+ 
++import android.content.res.Resources
++import android.os.Build
+ import androidx.compose.ui.graphics.Color
+ 
+ /**
+@@ -13,6 +15,17 @@ import androidx.compose.ui.graphics.Color
+  * clues and by bringing attention to primary actions."_
+  */
+ object PhotonColors {
++    private fun dynamicColor(resId: Int, fallback: Color): Color {
++        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
++            try {
++                Color(Resources.getSystem().getColor(resId, null))
++            } catch (e: Throwable) {
++                fallback
++            }
++        } else {
++            fallback
++        }
++    }
+     // Firefox Blue is one of our primary colors. We use blue as accent color for highlighting buttons,
+     // links and active states like the current tab in Firefox for desktop.
+     val Blue05 = Color(0xFFAAF2FF)
+@@ -121,62 +134,62 @@ object PhotonColors {
+     val Ink90 = Color(0xFF1D1133)
+ 
+     // Light grey should primarily be used for the Light Theme and secondary buttons.
+-    val LightGrey05 = Color(0xFFFBFBFE)
++    val LightGrey05 = dynamicColor(android.R.color.system_neutral1_0, Color(0xFFFBFBFE))
+     val LightGrey05A34 = LightGrey05.copy(alpha = 0.34f)
+     val LightGrey05A40 = Color(0x66FBFBFE)
+     val LightGrey05A50 = Color(0x80FBFBFE)
+     val LightGrey05A60 = Color(0x99FBFBFE)
+-    val LightGrey10 = Color(0xFFF9F9FB)
+-    val LightGrey20 = Color(0xFFF0F0F4)
+-    val LightGrey30 = Color(0xFFE0E0E6)
+-    val LightGrey40 = Color(0xFFCFCFD8)
+-    val LightGrey50 = Color(0xFFBFBFC9)
+-    val LightGrey60 = Color(0xFFAFAFBA)
+-    val LightGrey70 = Color(0xFF9F9FAD)
+-    val LightGrey80 = Color(0xFF8F8F9D)
+-    val LightGrey90 = Color(0xFF80808E)
++    val LightGrey10 = dynamicColor(android.R.color.system_neutral1_50, Color(0xFFF9F9FB))
++    val LightGrey20 = dynamicColor(android.R.color.system_neutral1_100, Color(0xFFF0F0F4))
++    val LightGrey30 = dynamicColor(android.R.color.system_neutral1_200, Color(0xFFE0E0E6))
++    val LightGrey40 = dynamicColor(android.R.color.system_neutral1_300, Color(0xFFCFCFD8))
++    val LightGrey50 = dynamicColor(android.R.color.system_neutral1_400, Color(0xFFBFBFC9))
++    val LightGrey60 = dynamicColor(android.R.color.system_neutral1_500, Color(0xFFAFAFBA))
++    val LightGrey70 = dynamicColor(android.R.color.system_neutral1_600, Color(0xFF9F9FAD))
++    val LightGrey80 = dynamicColor(android.R.color.system_neutral1_700, Color(0xFF8F8F9D))
++    val LightGrey90 = dynamicColor(android.R.color.system_neutral1_800, Color(0xFF80808E))
+ 
+     // Dark grey should primarily be used for the Dark theme and secondary buttons.
+-    val DarkGrey05 = Color(0xFF5B5B66)
++    val DarkGrey05 = dynamicColor(android.R.color.system_neutral1_400, Color(0xFF5B5B66))
+     val DarkGrey05A43 = DarkGrey05.copy(alpha = 0.43f)
+     val DarkGrey05A45 = Color(0x735B5B66)
+-    val DarkGrey10 = Color(0xFF52525E)
+-    val DarkGrey20 = Color(0xFF4A4A55)
+-    val DarkGrey30 = Color(0xFF42414D)
+-    val DarkGrey30A95 = Color(0xF242414D)
+-    val DarkGrey30A96 = Color(0xF542414D)
+-    val DarkGrey40 = Color(0xFF3A3944)
+-    val DarkGrey50 = Color(0xFF32313C)
+-    val DarkGrey60 = Color(0xFF2B2A33)
+-    val DarkGrey70 = Color(0xFF23222B)
+-    val DarkGrey80 = Color(0xFF1C1B22)
+-    val DarkGrey90 = Color(0xFF15141A)
+-    val DarkGrey90A40 = Color(0x6615141A)
++    val DarkGrey10 = dynamicColor(android.R.color.system_neutral1_500, Color(0xFF52525E))
++    val DarkGrey20 = dynamicColor(android.R.color.system_neutral1_500, Color(0xFF4A4A55))
++    val DarkGrey30 = dynamicColor(android.R.color.system_neutral1_600, Color(0xFF42414D))
++    val DarkGrey30A95 = DarkGrey30.copy(alpha = 0.95f)
++    val DarkGrey30A96 = DarkGrey30.copy(alpha = 0.96f)
++    val DarkGrey40 = dynamicColor(android.R.color.system_neutral1_700, Color(0xFF3A3944))
++    val DarkGrey50 = dynamicColor(android.R.color.system_neutral1_700, Color(0xFF32313C))
++    val DarkGrey60 = dynamicColor(android.R.color.system_neutral1_800, Color(0xFF2B2A33))
++    val DarkGrey70 = dynamicColor(android.R.color.system_neutral1_800, Color(0xFF23222B))
++    val DarkGrey80 = dynamicColor(android.R.color.system_neutral1_900, Color(0xFF1C1B22))
++    val DarkGrey90 = dynamicColor(android.R.color.system_neutral1_1000, Color(0xFF15141A))
++    val DarkGrey90A40 = DarkGrey90.copy(alpha = 0.40f)
+     val DarkGrey90A50 = DarkGrey90.copy(alpha = 0.50f)
+-    val DarkGrey90A60 = Color(0x9915141A)
+-    val DarkGrey90A95 = Color(0xF215141A)
+-    val DarkGrey90A96 = Color(0xF515141A)
++    val DarkGrey90A60 = DarkGrey90.copy(alpha = 0.60f)
++    val DarkGrey90A95 = DarkGrey90.copy(alpha = 0.95f)
++    val DarkGrey90A96 = DarkGrey90.copy(alpha = 0.96f)
+ 
+     // Violet
+-    val Violet05 = Color(0xFFE7DFFF)
+-    val Violet10 = Color(0xFFD9BFFF)
+-    val Violet20 = Color(0xFFCB9EFF)
+-    val Violet20A60 = Color(0x99CB9EFF)
+-    val Violet30 = Color(0xFFC689FF)
+-    val Violet40 = Color(0xFFAB71FF)
+-    val Violet40A12 = Color(0x1FAB71FF)
+-    val Violet40A30 = Color(0x4DAB71FF)
+-    val Violet50 = Color(0xFF9059FF)
+-    val Violet50A32 = Color(0x529059FF)
+-    val Violet50A48 = Color(0x7A9059FF)
+-    val Violet60 = Color(0xFF7542E5)
+-    val Violet60A50 = Color(0x807542E5)
+-    val Violet70 = Color(0xFF592ACB)
+-    val Violet70A12 = Color(0x1F592ACB)
+-    val Violet70A80 = Color(0xCC592ACB)
+-    val Violet80 = Color(0xFF45278D)
+-    val Violet90 = Color(0xFF321C64)
+-    val Violet90A20 = Color(0x33321C64)
++    val Violet05 = dynamicColor(android.R.color.system_accent1_100, Color(0xFFE7DFFF))
++    val Violet10 = dynamicColor(android.R.color.system_accent1_100, Color(0xFFD9BFFF))
++    val Violet20 = dynamicColor(android.R.color.system_accent1_200, Color(0xFFCB9EFF))
++    val Violet20A60 = Violet20.copy(alpha = 0.60f)
++    val Violet30 = dynamicColor(android.R.color.system_accent1_300, Color(0xFFC689FF))
++    val Violet40 = dynamicColor(android.R.color.system_accent1_400, Color(0xFFAB71FF))
++    val Violet40A12 = Violet40.copy(alpha = 0.12f)
++    val Violet40A30 = Violet40.copy(alpha = 0.30f)
++    val Violet50 = dynamicColor(android.R.color.system_accent1_500, Color(0xFF9059FF))
++    val Violet50A32 = Violet50.copy(alpha = 0.32f)
++    val Violet50A48 = Violet50.copy(alpha = 0.48f)
++    val Violet60 = dynamicColor(android.R.color.system_accent1_700, Color(0xFF7542E5))
++    val Violet60A50 = Violet60.copy(alpha = 0.50f)
++    val Violet70 = dynamicColor(android.R.color.system_accent1_600, Color(0xFF592ACB))
++    val Violet70A12 = Violet70.copy(alpha = 0.12f)
++    val Violet70A80 = Violet70.copy(alpha = 0.80f)
++    val Violet80 = dynamicColor(android.R.color.system_accent1_800, Color(0xFF45278D))
++    val Violet90 = dynamicColor(android.R.color.system_accent1_900, Color(0xFF321C64))
++    val Violet90A20 = Violet90.copy(alpha = 0.20f)
+ 
+     val White = Color(0xFFFFFFFF)
+     val Black = Color(0xFF000000)

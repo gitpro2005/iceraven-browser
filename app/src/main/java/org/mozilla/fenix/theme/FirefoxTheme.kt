@@ -4,10 +4,14 @@
 
 package org.mozilla.fenix.theme
 
+import android.os.Build
 import androidx.compose.material3.ColorScheme
+import androidx.compose.material3.dynamicDarkColorScheme
+import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
+import androidx.compose.ui.platform.LocalContext
 import mozilla.components.compose.base.theme.AcornColors
 import mozilla.components.compose.base.theme.AcornGradientScheme
 import mozilla.components.compose.base.theme.AcornTheme
@@ -35,16 +39,22 @@ fun FirefoxTheme(
     theme: Theme = getThemeProvider().provideTheme(),
     content: @Composable () -> Unit,
 ) {
+    val context = LocalContext.current
+    val supportsDynamic = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+
     val colors: AcornColors = when (theme) {
         Theme.Light -> lightColorPalette
         Theme.Dark -> darkColorPalette
         Theme.Private -> privateColorPalette
     }
 
-    val colorScheme: ColorScheme = when (theme) {
-        Theme.Light -> acornLightColorScheme()
-        Theme.Dark -> acornDarkColorScheme()
-        Theme.Private -> acornPrivateColorScheme()
+    val colorScheme: ColorScheme = when {
+        supportsDynamic && theme == Theme.Light -> dynamicLightColorScheme(context)
+        supportsDynamic && theme == Theme.Dark -> dynamicDarkColorScheme(context)
+        theme == Theme.Light -> acornLightColorScheme()
+        theme == Theme.Dark -> acornDarkColorScheme()
+        theme == Theme.Private -> acornPrivateColorScheme()
+        else -> acornLightColorScheme()
     }
 
     val gradients: AcornGradientScheme = when (theme) {
