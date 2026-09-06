@@ -44,6 +44,22 @@
 
     <androidx.preference.PreferenceCategory
         android:layout="@layout/preference_cat_style"
+        android:title="@string/preferences_theme_style"
+        android:key="@string/pref_key_customization_category_theme_style"
+        app:iconSpaceReserved="false">
+        <org.mozilla.fenix.settings.RadioButtonPreference
+            android:key="@string/pref_key_theme_style_classic"
+            android:title="@string/preference_theme_style_classic"
+            android:summary="@string/preference_theme_style_classic_summary" />
+
+        <org.mozilla.fenix.settings.RadioButtonPreference
+            android:key="@string/pref_key_theme_style_material_you"
+            android:title="@string/preference_theme_style_material_you"
+            android:summary="@string/preference_theme_style_material_you_summary" />
+    </androidx.preference.PreferenceCategory>
+
+    <androidx.preference.PreferenceCategory
+        android:layout="@layout/preference_cat_style"
         android:title="@string/preferences_toolbar_2"
         android:key="@string/pref_key_customization_category_toolbar"
         app:iconSpaceReserved="false">

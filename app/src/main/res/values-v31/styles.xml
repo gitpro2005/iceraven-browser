@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="NormalTheme.MaterialYou" parent="NormalThemeBase">
+        <item name="colorPrimary">@color/my_dynamic_light_primary</item>
+        <item name="colorOnPrimary">@color/my_dynamic_light_on_primary</item>
+        <item name="colorPrimaryContainer">@color/my_dynamic_light_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/my_dynamic_light_on_primary_container</item>
+        <item name="colorSecondary">@color/my_dynamic_light_secondary</item>
+        <item name="colorOnSecondary">@color/my_dynamic_light_on_secondary</item>
+        <item name="colorSecondaryContainer">@color/my_dynamic_light_secondary_container</item>
+        <item name="colorOnSecondaryContainer">@color/my_dynamic_light_on_secondary_container</item>
+        <item name="colorTertiary">@color/my_dynamic_light_tertiary</item>
+        <item name="colorOnTertiary">@color/my_dynamic_light_on_tertiary</item>
+        <item name="colorTertiaryContainer">@color/my_dynamic_light_tertiary_container</item>
+        <item name="colorOnTertiaryContainer">@color/my_dynamic_light_on_tertiary_container</item>
+        <item name="android:colorBackground">@color/my_dynamic_light_background</item>
+        <item name="colorOnBackground">@color/my_dynamic_light_on_surface</item>
+        <item name="colorSurface">@color/my_dynamic_light_surface</item>
+        <item name="colorOnSurface">@color/my_dynamic_light_on_surface</item>
+        <item name="colorSurfaceVariant">@color/my_dynamic_light_surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/my_dynamic_light_on_surface_variant</item>
+        <item name="colorOutline">@color/my_dynamic_light_outline</item>
+        <item name="colorOutlineVariant">@color/my_dynamic_light_outline_variant</item>
+        <item name="layer2">@color/my_dynamic_light_layer_2</item>
+        <item name="layer3">@color/my_dynamic_light_layer_3</item>
+        <item name="colorControlActivated">@color/my_dynamic_light_primary</item>
+        <item name="android:colorControlActivated">@color/my_dynamic_light_primary</item>
+        <item name="accent">@color/my_dynamic_light_primary</item>
+        <item name="accentBright">@color/my_dynamic_light_primary</item>
+        <item name="accentHighContrast">@color/my_dynamic_light_primary</item>
+        <item name="toolbarStartGradient">@color/my_dynamic_light_surface</item>
+        <item name="toolbarCenterGradient">@color/my_dynamic_light_surface</item>
+        <item name="toolbarEndGradient">@color/my_dynamic_light_surface</item>
+    </style>
+</resources>

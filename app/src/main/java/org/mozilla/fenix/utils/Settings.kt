@@ -69,6 +69,7 @@ import org.mozilla.fenix.settings.sitepermissions.AUTOPLAY_BLOCK_ALL
 import org.mozilla.fenix.settings.sitepermissions.AUTOPLAY_BLOCK_AUDIBLE
 import org.mozilla.fenix.tabstray.DefaultTabManagementFeatureHelper
 import org.mozilla.fenix.termsofuse.TOU_VERSION
+import org.mozilla.fenix.theme.ThemeStyle
 import org.mozilla.fenix.utils.Settings.Companion.LONGFOX_PEEK_ANIMATION_MAX_SHOWS
 import org.mozilla.fenix.wallpapers.Wallpaper
 import java.io.File
@@ -1237,6 +1238,21 @@ class Settings(
         appContext.getPreferenceKey(R.string.pref_key_follow_device_theme),
         default = false,
     )
+
+    var themeStyle: ThemeStyle
+        get() {
+            val defaultVal = ThemeStyle.defaultThemeStyle().value
+            val stringVal = preferences.getString(
+                appContext.getPreferenceKey(R.string.pref_key_theme_style),
+                defaultVal,
+            ) ?: defaultVal
+            return ThemeStyle.fromValue(stringVal)
+        }
+        set(value) {
+            preferences.edit {
+                putString(appContext.getPreferenceKey(R.string.pref_key_theme_style), value.value)
+            }
+        }
 
     var shouldUseHttpsOnly by booleanPreference(
         appContext.getPreferenceKey(R.string.pref_key_https_only),

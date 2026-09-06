@@ -207,6 +207,8 @@
 
     <style name="NormalTheme" parent="NormalThemeBase" />
 
+    <style name="NormalTheme.MaterialYou" parent="NormalTheme" />
+
     <style name="BaseDialogStyle.Private" parent="BaseDialogStyle">
         <item name="android:background">?attr/layer2</item>
         <item name="materialAlertDialogTitleTextStyle">@style/MaterialAlertDialog.App.Title.Text.Private</item>

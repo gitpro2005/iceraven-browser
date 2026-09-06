@@ -23,7 +23,6 @@ sed -i 's#mobile/android/##g' android-components/components/lib/crash/build.grad
 
 git -C android-components apply < automation/iceraven/patches/top_sites_no_most_visted_sites.patch
 git -C android-components apply < automation/iceraven/patches/toolbar.patch
-git -C android-components apply < automation/iceraven/patches/material_you_colors.patch
 
 python automation/iceraven/toolkit/crashreporter/generate_crash_reporter_sources.py
 

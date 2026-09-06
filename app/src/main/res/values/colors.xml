@@ -267,4 +267,56 @@
     <!-- Private mode circle fill colors for mozac_ic_private_mode_circle_fill_72 -->
     <color name="mozac_ic_private_mode_circle_fill_72_background_color" tools:ignore="UnusedResources">@color/fx_mobile_icon_private</color>
     <color name="mozac_ic_private_mode_circle_fill_72_icon_color" tools:ignore="UnusedResources">@color/private_mode_mask_gradient</color>
+
+    <!-- Material You fallback tokens for pre-API 31 -->
+    <color name="my_dynamic_light_primary">@color/fx_mobile_primary</color>
+    <color name="my_dynamic_light_on_primary">@color/fx_mobile_on_primary</color>
+    <color name="my_dynamic_light_primary_container">@color/fx_mobile_primary_container</color>
+    <color name="my_dynamic_light_on_primary_container">@color/fx_mobile_on_primary_container</color>
+    <color name="my_dynamic_light_secondary">@color/fx_mobile_secondary</color>
+    <color name="my_dynamic_light_on_secondary">@color/fx_mobile_on_secondary</color>
+    <color name="my_dynamic_light_secondary_container">@color/fx_mobile_secondary_container</color>
+    <color name="my_dynamic_light_on_secondary_container">@color/fx_mobile_on_secondary_container</color>
+    <color name="my_dynamic_light_tertiary">@color/fx_mobile_primary</color>
+    <color name="my_dynamic_light_on_tertiary">@color/fx_mobile_on_primary</color>
+    <color name="my_dynamic_light_tertiary_container">@color/fx_mobile_primary_container</color>
+    <color name="my_dynamic_light_on_tertiary_container">@color/fx_mobile_on_primary_container</color>
+    <color name="my_dynamic_light_surface">@color/fx_mobile_surface</color>
+    <color name="my_dynamic_light_on_surface">@color/fx_mobile_on_surface</color>
+    <color name="my_dynamic_light_surface_variant">@color/fx_mobile_surface_variant</color>
+    <color name="my_dynamic_light_on_surface_variant">@color/fx_mobile_on_surface_variant</color>
+    <color name="my_dynamic_light_outline">@color/fx_mobile_outline</color>
+    <color name="my_dynamic_light_outline_variant">@color/fx_mobile_outline_variant</color>
+    <color name="my_dynamic_light_background">@color/fx_mobile_background</color>
+    <color name="my_dynamic_light_layer_2">@color/fx_mobile_layer_color_2</color>
+    <color name="my_dynamic_light_layer_3">@color/fx_mobile_layer_color_3</color>
+
+    <color name="my_dynamic_dark_primary">@color/fx_mobile_primary</color>
+    <color name="my_dynamic_dark_on_primary">@color/fx_mobile_on_primary</color>
+    <color name="my_dynamic_dark_primary_container">@color/fx_mobile_primary_container</color>
+    <color name="my_dynamic_dark_on_primary_container">@color/fx_mobile_on_primary_container</color>
+    <color name="my_dynamic_dark_secondary">@color/fx_mobile_secondary</color>
+    <color name="my_dynamic_dark_on_secondary">@color/fx_mobile_on_secondary</color>
+    <color name="my_dynamic_dark_secondary_container">@color/fx_mobile_secondary_container</color>
+    <color name="my_dynamic_dark_on_secondary_container">@color/fx_mobile_on_secondary_container</color>
+    <color name="my_dynamic_dark_tertiary">@color/fx_mobile_primary</color>
+    <color name="my_dynamic_dark_on_tertiary">@color/fx_mobile_on_primary</color>
+    <color name="my_dynamic_dark_tertiary_container">@color/fx_mobile_primary_container</color>
+    <color name="my_dynamic_dark_on_tertiary_container">@color/fx_mobile_on_primary_container</color>
+    <color name="my_dynamic_dark_surface">@color/fx_mobile_surface</color>
+    <color name="my_dynamic_dark_on_surface">@color/fx_mobile_on_surface</color>
+    <color name="my_dynamic_dark_surface_variant">@color/fx_mobile_surface_variant</color>
+    <color name="my_dynamic_dark_on_surface_variant">@color/fx_mobile_on_surface_variant</color>
+    <color name="my_dynamic_dark_outline">@color/fx_mobile_outline</color>
+    <color name="my_dynamic_dark_outline_variant">@color/fx_mobile_outline_variant</color>
+    <color name="my_dynamic_dark_background">@color/fx_mobile_background</color>
+    <color name="my_dynamic_dark_layer_2">@color/fx_mobile_layer_color_2</color>
+    <color name="my_dynamic_dark_layer_3">@color/fx_mobile_layer_color_3</color>
+    <color name="my_dynamic_dark_surface_container">@color/fx_mobile_surface_container</color>
+    <color name="my_dynamic_dark_surface_container_high">@color/fx_mobile_surface_container_high</color>
+    <color name="my_dynamic_dark_surface_container_highest">@color/fx_mobile_surface_container_highest</color>
+    <color name="my_dynamic_dark_surface_container_low">@color/fx_mobile_surface_container_low</color>
+    <color name="my_dynamic_dark_surface_container_lowest">@color/fx_mobile_surface_container_lowest</color>
+    <color name="my_dynamic_dark_surface_bright">@color/fx_mobile_surface_bright</color>
+    <color name="my_dynamic_dark_surface_dim">@color/fx_mobile_surface_dim</color>
 </resources>

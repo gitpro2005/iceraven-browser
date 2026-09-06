@@ -40,6 +40,7 @@ import org.mozilla.fenix.ext.showToolbar
 import org.mozilla.fenix.settings.settingssearch.PreferenceFileInformation.CustomizationPreferences
 import org.mozilla.fenix.settings.settingssearch.SettingsSearchItem
 import org.mozilla.fenix.settings.settingssearch.SettingsSearchProvider
+import org.mozilla.fenix.theme.ThemeStyle
 import org.mozilla.fenix.translations.TranslationsEnabledSettings
 import org.mozilla.fenix.utils.Settings
 import org.mozilla.fenix.utils.view.addToRadioGroup
@@ -54,6 +55,8 @@ class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFrag
     private lateinit var radioDarkTheme: RadioButtonPreference
     private lateinit var radioAutoBatteryTheme: RadioButtonPreference
     private lateinit var radioFollowDeviceTheme: RadioButtonPreference
+    private lateinit var radioClassicTheme: RadioButtonPreference
+    private lateinit var radioMaterialYouTheme: RadioButtonPreference
     private val args by navArgs<CustomizationFragmentArgs>()
 
     // Cached reactive feature state used when (re)building preferences.
@@ -116,6 +119,7 @@ class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFrag
         bindLightTheme()
         bindAutoBatteryTheme()
         setupRadioGroups()
+        bindThemeStyle()
         val tabletAndTabStripEnabled = Settings(requireContext()).isTabStripEnabled
         updateToolbarCategoryBasedOnTabStrip(tabletAndTabStripEnabled)
         setupTabStripCategory()
@@ -282,6 +286,39 @@ class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFrag
         if (SDK_INT >= Build.VERSION_CODES.P) {
             radioFollowDeviceTheme.onClickListener {
                 setNewTheme(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+            }
+        }
+    }
+
+    private fun bindThemeStyle() {
+        val themeStyleCategory = findPreference<PreferenceCategory>(getString(R.string.pref_key_customization_category_theme_style))
+        radioClassicTheme = requirePreference(R.string.pref_key_theme_style_classic)
+        radioMaterialYouTheme = requirePreference(R.string.pref_key_theme_style_material_you)
+
+        if (SDK_INT < Build.VERSION_CODES.S) {
+            themeStyleCategory?.isVisible = false
+            return
+        }
+
+        val settings = requireComponents.settings
+        val currentStyle = settings.themeStyle
+
+        radioClassicTheme.setCheckedWithoutClickListener(currentStyle == ThemeStyle.CLASSIC)
+        radioMaterialYouTheme.setCheckedWithoutClickListener(currentStyle == ThemeStyle.MATERIAL_YOU)
+
+        addToRadioGroup(radioClassicTheme, radioMaterialYouTheme)
+
+        radioClassicTheme.onClickListener {
+            if (settings.themeStyle != ThemeStyle.CLASSIC) {
+                settings.themeStyle = ThemeStyle.CLASSIC
+                activity?.recreate()
+            }
+        }
+
+        radioMaterialYouTheme.onClickListener {
+            if (settings.themeStyle != ThemeStyle.MATERIAL_YOU) {
+                settings.themeStyle = ThemeStyle.MATERIAL_YOU
+                activity?.recreate()
             }
         }
     }

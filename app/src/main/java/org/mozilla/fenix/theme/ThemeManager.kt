@@ -8,6 +8,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
+import android.os.Build
 import android.util.TypedValue
 import android.view.Window
 import androidx.annotation.AnyRes
@@ -25,6 +26,7 @@ import org.mozilla.fenix.HomeActivity
 import org.mozilla.fenix.R
 import org.mozilla.fenix.browser.browsingmode.BrowsingMode
 import org.mozilla.fenix.customtabs.ExternalAppBrowserActivity
+import org.mozilla.fenix.ext.components
 import com.google.android.material.R as materialR
 
 abstract class ThemeManager {
@@ -35,7 +37,7 @@ abstract class ThemeManager {
      * Returns the style resource corresponding to the [currentTheme].
      */
     @get:StyleRes
-    val currentThemeResource get() = when (currentTheme) {
+    open val currentThemeResource: Int get() = when (currentTheme) {
         BrowsingMode.Normal -> R.style.NormalTheme
         BrowsingMode.Private -> R.style.PrivateTheme
     }
@@ -136,6 +138,25 @@ class DefaultThemeManager(
     currentTheme: BrowsingMode,
     private val activity: Activity,
 ) : ThemeManager() {
+    override val currentThemeResource: Int
+        get() = when (currentTheme) {
+            BrowsingMode.Normal -> {
+                val settings = activity.components.settings
+                when (settings.themeStyle) {
+                    ThemeStyle.MATERIAL_YOU -> {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                            R.style.NormalTheme_MaterialYou
+                        } else {
+                            R.style.NormalTheme
+                        }
+                    }
+                    ThemeStyle.CLASSIC -> R.style.NormalTheme
+                    ThemeStyle.AMOLED -> R.style.NormalTheme
+                }
+            }
+            BrowsingMode.Private -> R.style.PrivateTheme
+        }
+
     override var currentTheme: BrowsingMode = currentTheme
         set(value) {
             if (currentTheme != value) {

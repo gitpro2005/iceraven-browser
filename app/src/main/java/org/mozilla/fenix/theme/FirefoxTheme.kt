@@ -28,6 +28,8 @@ import mozilla.components.compose.base.theme.lightColorPalette
 import mozilla.components.compose.base.theme.privateAcornGradientScheme
 import mozilla.components.compose.base.theme.privateColorPalette
 
+import org.mozilla.fenix.ext.components
+
 /**
  * The theme for Mozilla Firefox for Android (Fenix).
  *
@@ -40,7 +42,9 @@ fun FirefoxTheme(
     content: @Composable () -> Unit,
 ) {
     val context = LocalContext.current
-    val supportsDynamic = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+    val isDynamic = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && runCatching {
+        context.components.settings.themeStyle == ThemeStyle.MATERIAL_YOU
+    }.getOrDefault(true)
 
     val colors: AcornColors = when (theme) {
         Theme.Light -> lightColorPalette
@@ -48,13 +52,36 @@ fun FirefoxTheme(
         Theme.Private -> privateColorPalette
     }
 
-    val colorScheme: ColorScheme = when {
-        supportsDynamic && theme == Theme.Light -> dynamicLightColorScheme(context)
-        supportsDynamic && theme == Theme.Dark -> dynamicDarkColorScheme(context)
-        theme == Theme.Light -> acornLightColorScheme()
-        theme == Theme.Dark -> acornDarkColorScheme()
-        theme == Theme.Private -> acornPrivateColorScheme()
-        else -> acornLightColorScheme()
+    val lightDynamicScheme = if (isDynamic && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+        dynamicLightColorScheme(context).let {
+            it.copy(
+                tertiary = it.primary,
+                onTertiary = it.onPrimary,
+                tertiaryContainer = it.primaryContainer,
+                onTertiaryContainer = it.onPrimaryContainer,
+            )
+        }
+    } else {
+        null
+    }
+
+    val darkDynamicScheme = if (isDynamic && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+        dynamicDarkColorScheme(context).let {
+            it.copy(
+                tertiary = it.primary,
+                onTertiary = it.onPrimary,
+                tertiaryContainer = it.primaryContainer,
+                onTertiaryContainer = it.onPrimaryContainer,
+            )
+        }
+    } else {
+        null
+    }
+
+    val colorScheme: ColorScheme = when (theme) {
+        Theme.Private -> acornPrivateColorScheme() // ALWAYS pure stock private theme!
+        Theme.Light -> lightDynamicScheme ?: acornLightColorScheme()
+        Theme.Dark -> darkDynamicScheme ?: acornDarkColorScheme()
     }
 
     val gradients: AcornGradientScheme = when (theme) {

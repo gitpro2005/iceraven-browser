@@ -821,6 +821,12 @@
     <string name="preferences_toolbar_layout">Toolbar layout</string>
     <!-- Preference for changing default theme to dark or light mode -->
     <string name="preferences_theme">Theme</string>
+    <!-- Preference for choosing theme palette/style -->
+    <string name="preferences_theme_style">Theme style</string>
+    <string name="preference_theme_style_classic">Classic Iceraven</string>
+    <string name="preference_theme_style_classic_summary">Original purple accents and slate surfaces</string>
+    <string name="preference_theme_style_material_you">Material You (Dynamic)</string>
+    <string name="preference_theme_style_material_you_summary">Match colors with wallpaper (Android 12+)</string>
     <!-- Preference for customizing the home screen -->
     <string name="preferences_home_2">Homepage</string>
     <!-- Preference for customizing the app icon-->

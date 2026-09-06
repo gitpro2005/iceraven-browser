@@ -216,6 +216,10 @@
     <string name="pref_key_dark_theme" translatable="false">pref_key_dark_theme</string>
     <string name="pref_key_auto_battery_theme" translatable="false">pref_key_auto_battery_theme</string>
     <string name="pref_key_follow_device_theme" translatable="false">pref_key_follow_device_theme</string>
+    <string name="pref_key_theme_style" translatable="false">pref_key_theme_style</string>
+    <string name="pref_key_customization_category_theme_style" translatable="false">pref_key_customization_category_theme_style</string>
+    <string name="pref_key_theme_style_classic" translatable="false">pref_key_theme_style_classic</string>
+    <string name="pref_key_theme_style_material_you" translatable="false">pref_key_theme_style_material_you</string>
 
     <!-- Customization Settings -->
     <string name="pref_key_customization_preference_screen" translatable="false">pref_key_customization_preference_screen</string>
