@@ -59,6 +59,10 @@
     <attr name="toolbarStartGradient" format="reference"/>
     <attr name="toolbarCenterGradient" format="reference"/>
     <attr name="toolbarEndGradient" format="reference"/>
+    <attr name="homepageGradientStart" format="reference|color" />
+    <attr name="homepageGradientEnd" format="reference|color" />
+    <attr name="homepageTabStripActive" format="reference|color" />
+    <attr name="homepageTabStripInactive" format="reference|color" />
     <attr name="fillLinkFromClipboard" format="reference"/>
     <attr name="addOnPrivateBrowsingExteriorCircleBackground" format="reference"/>
     <attr name="awesomeBarIndicatorColor" format="reference|color"/>

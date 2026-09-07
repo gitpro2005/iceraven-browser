@@ -57,6 +57,7 @@ import org.mozilla.fenix.compose.ClickableSubstringLink
 import org.mozilla.fenix.theme.FirefoxTheme
 import org.mozilla.fenix.theme.PreviewThemeProvider
 import org.mozilla.fenix.theme.Theme
+import org.mozilla.fenix.theme.ThemeManager
 import org.mozilla.fenix.wallpapers.Wallpaper
 
 /**
@@ -346,8 +347,8 @@ private fun Modifier.edgeToEdgeGradientConditional(predicate: () -> Boolean): Mo
             brush =
                 Brush.verticalGradient(
                     colors = listOf(
-                        colorResource(R.color.homepage_edge_to_edge_gradient_start),
-                        colorResource(R.color.homepage_edge_to_edge_gradient_end),
+                        ThemeManager.resolveAttributeColor(R.attr.homepageGradientStart),
+                        ThemeManager.resolveAttributeColor(R.attr.homepageGradientEnd),
                     ),
                 ),
         ),

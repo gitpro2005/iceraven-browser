@@ -14,6 +14,7 @@ import mozilla.components.compose.browser.toolbar.store.BrowserToolbarState
 import org.mozilla.fenix.R
 import org.mozilla.fenix.browser.browsingmode.BrowsingModeManager
 import org.mozilla.fenix.theme.FirefoxTheme
+import org.mozilla.fenix.theme.ThemeManager
 import org.mozilla.fenix.utils.Settings
 import org.mozilla.fenix.wallpapers.Wallpaper
 
@@ -81,11 +82,11 @@ data class TabStripColors(
                         colorResource(R.color.homepage_tab_edge_to_edge_toolbar_background),
                     ),
                     tabItemBackgroundColors = TabColors(
-                        activeColor = colorResource(
-                            R.color.homepage_tab_edge_to_edge_tab_strip_item_background_active,
+                        activeColor = ThemeManager.resolveAttributeColor(
+                            R.attr.homepageTabStripActive,
                         ),
-                        inactiveColor = colorResource(
-                            R.color.homepage_tab_edge_to_edge_tab_strip_item_background_inactive,
+                        inactiveColor = ThemeManager.resolveAttributeColor(
+                            R.attr.homepageTabStripInactive,
                         ),
                     ),
                 )

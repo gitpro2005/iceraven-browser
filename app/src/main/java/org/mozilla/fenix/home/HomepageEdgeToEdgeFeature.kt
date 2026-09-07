@@ -30,6 +30,7 @@ import org.mozilla.fenix.R
 import org.mozilla.fenix.browser.browsingmode.BrowsingMode
 import org.mozilla.fenix.browser.browsingmode.BrowsingModeManager
 import org.mozilla.fenix.components.AppStore
+import org.mozilla.fenix.theme.ThemeManager
 import org.mozilla.fenix.utils.Settings
 import org.mozilla.fenix.wallpapers.Wallpaper
 import com.google.android.material.R as materialR
@@ -111,9 +112,21 @@ class HomepageEdgeToEdgeFeature(
 
     private fun setBackground(background: Background) {
         val isPrivateMode = browsingModeManager.mode == BrowsingMode.Private
-        activity.window?.setBackgroundDrawableResource(
-            if (isPrivateMode) R.color.fx_mobile_private_surface else background.resourceId,
-        )
+        if (isPrivateMode) {
+            activity.window?.setBackgroundDrawableResource(R.color.fx_mobile_private_surface)
+        } else {
+            when (background) {
+                Background.HomeEdgeToEdge -> activity.window?.setBackgroundDrawableResource(R.drawable.home_background_gradient)
+                Background.Regular -> {
+                    val windowBackgroundRes = ThemeManager.resolveAttribute(android.R.attr.windowBackground, activity)
+                    if (windowBackgroundRes != 0) {
+                        activity.window?.setBackgroundDrawableResource(windowBackgroundRes)
+                    } else {
+                        activity.window?.setBackgroundDrawableResource(R.color.fx_mobile_surface)
+                    }
+                }
+            }
+        }
     }
 
     /**

@@ -36,8 +36,13 @@
         <item name="accent">@color/my_dynamic_dark_primary</item>
         <item name="accentBright">@color/my_dynamic_dark_primary</item>
         <item name="accentHighContrast">@color/my_dynamic_dark_primary</item>
+        <item name="android:windowBackground">@color/my_dynamic_dark_surface</item>
         <item name="toolbarStartGradient">@color/my_dynamic_dark_surface</item>
         <item name="toolbarCenterGradient">@color/my_dynamic_dark_surface</item>
         <item name="toolbarEndGradient">@color/my_dynamic_dark_surface</item>
+        <item name="homepageGradientStart">@android:color/system_accent1_900</item>
+        <item name="homepageGradientEnd">@android:color/system_accent1_800</item>
+        <item name="homepageTabStripActive">@android:color/system_accent1_700</item>
+        <item name="homepageTabStripInactive">@android:color/system_accent1_900</item>
     </style>
 </resources>

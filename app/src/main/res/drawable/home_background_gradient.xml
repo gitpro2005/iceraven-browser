@@ -7,7 +7,7 @@
     <gradient
         android:type="linear"
         android:angle="270"
-        android:startColor="@color/homepage_edge_to_edge_gradient_start"
-        android:endColor="@color/homepage_edge_to_edge_gradient_end"
+        android:startColor="?attr/homepageGradientStart"
+        android:endColor="?attr/homepageGradientEnd"
         android:useLevel="false" />
 </shape>

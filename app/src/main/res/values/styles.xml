@@ -145,6 +145,10 @@
         <item name="toolbarStartGradient">@color/fx_mobile_surface</item>
         <item name="toolbarCenterGradient">@color/fx_mobile_surface</item>
         <item name="toolbarEndGradient">@color/fx_mobile_surface</item>
+        <item name="homepageGradientStart">@color/homepage_edge_to_edge_gradient_start</item>
+        <item name="homepageGradientEnd">@color/homepage_edge_to_edge_gradient_end</item>
+        <item name="homepageTabStripActive">@color/homepage_tab_edge_to_edge_tab_strip_item_background_active</item>
+        <item name="homepageTabStripInactive">@color/homepage_tab_edge_to_edge_tab_strip_item_background_inactive</item>
         <item name="fillLinkFromClipboard">@color/fill_link_from_clipboard_normal_theme</item>
         <item name="addOnPrivateBrowsingExteriorCircleBackground">@color/add_on_private_browsing_exterior_circle_background_normal_theme</item>
         <item name="mozacPromptLoginEditTextCursorColor">@color/prompt_login_edit_text_cursor_color_normal_theme</item>

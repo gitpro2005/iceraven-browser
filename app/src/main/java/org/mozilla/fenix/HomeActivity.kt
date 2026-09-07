@@ -495,8 +495,12 @@ open class HomeActivity : LocaleAwareAppCompatActivity(), NavHostActivity, Crash
             scope = lifecycleScope,
             splashScreenTimeout = FxNimbus.features.splashScreen.value().maximumDurationMs.toLong(),
             storage = DefaultSplashScreenStorage(components.settings),
-            showSplashScreen = { installSplashScreen().setKeepOnScreenCondition(it) },
+            showSplashScreen = {
+                installSplashScreen().setKeepOnScreenCondition(it)
+                themeManager.setActivityTheme(this)
+            },
             onSplashScreenFinished = { result ->
+                themeManager.setActivityTheme(this)
                 if (result.sendTelemetry) {
                     SplashScreen.firstLaunchExtended.record(
                         SplashScreen.FirstLaunchExtendedExtra(dataFetched = result.wasDataFetched),
