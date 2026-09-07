@@ -130,13 +130,13 @@ class BrowserToolbarComposable(
                 materialColors.copy(
                     // Toolbar background
                     surface = customColors.value?.toolbarColor?.let { Color(it) }
-                        ?: materialColors.surface,
+                        ?: materialColors.background,
                     // Page origin background
                     surfaceContainerHighest = when (customTabSession) {
                         // show a different background only for normal tabs
                         null -> materialColors.surfaceContainerHighest
                         else -> customColors.value?.toolbarColor?.let { Color(it) }
-                            ?: materialColors.surface
+                            ?: materialColors.background
                     },
                     onSurface = customColors.value?.readableColor?.let { Color(it) }
                         ?: materialColors.onSurface,
