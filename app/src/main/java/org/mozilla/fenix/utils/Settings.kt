@@ -1254,6 +1254,11 @@ class Settings(
             }
         }
 
+    var isTabAreaGradientEnabled by booleanPreference(
+        appContext.getPreferenceKey(R.string.pref_key_tab_area_gradient),
+        default = true,
+    )
+
     var shouldUseHttpsOnly by booleanPreference(
         appContext.getPreferenceKey(R.string.pref_key_https_only),
         default = false,

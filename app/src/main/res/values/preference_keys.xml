@@ -220,6 +220,7 @@
     <string name="pref_key_customization_category_theme_style" translatable="false">pref_key_customization_category_theme_style</string>
     <string name="pref_key_theme_style_classic" translatable="false">pref_key_theme_style_classic</string>
     <string name="pref_key_theme_style_material_you" translatable="false">pref_key_theme_style_material_you</string>
+    <string name="pref_key_tab_area_gradient" translatable="false">pref_key_tab_area_gradient</string>
 
     <!-- Customization Settings -->
     <string name="pref_key_customization_preference_screen" translatable="false">pref_key_customization_preference_screen</string>

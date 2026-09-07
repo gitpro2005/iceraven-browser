@@ -56,6 +56,12 @@
             android:key="@string/pref_key_theme_style_material_you"
             android:title="@string/preference_theme_style_material_you"
             android:summary="@string/preference_theme_style_material_you_summary" />
+
+        <androidx.preference.SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="@string/pref_key_tab_area_gradient"
+            android:title="@string/preference_tab_area_gradient"
+            android:summary="@string/preference_tab_area_gradient_summary" />
     </androidx.preference.PreferenceCategory>
 
     <androidx.preference.PreferenceCategory

@@ -44,5 +44,8 @@
         <item name="homepageGradientEnd">@android:color/system_accent1_800</item>
         <item name="homepageTabStripActive">@android:color/system_accent1_700</item>
         <item name="homepageTabStripInactive">@android:color/system_accent1_900</item>
+        <item name="progressBarStartColor">@android:color/system_accent1_300</item>
+        <item name="progressBarCenterColor">@android:color/system_accent2_300</item>
+        <item name="progressBarEndColor">@android:color/system_accent3_200</item>
     </style>
 </resources>

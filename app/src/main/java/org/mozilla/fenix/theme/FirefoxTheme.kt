@@ -12,10 +12,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import mozilla.components.compose.base.theme.AcornColors
+import mozilla.components.compose.base.theme.AcornGradient
 import mozilla.components.compose.base.theme.AcornGradientScheme
+import mozilla.components.compose.base.theme.AcornGradientType
 import mozilla.components.compose.base.theme.AcornTheme
 import mozilla.components.compose.base.theme.AcornTypography
+import mozilla.components.compose.base.utils.ColorStop
 import mozilla.components.compose.base.theme.acornDarkColorScheme
 import mozilla.components.compose.base.theme.acornLightColorScheme
 import mozilla.components.compose.base.theme.acornPrivateColorScheme
@@ -84,10 +88,104 @@ fun FirefoxTheme(
         Theme.Dark -> darkDynamicScheme ?: acornDarkColorScheme()
     }
 
+    val dynamicGradients: AcornGradientScheme? = if (isDynamic && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && theme != Theme.Private) {
+        val isTabAreaGradient = runCatching {
+            context.components.settings.isTabAreaGradientEnabled
+        }.getOrDefault(true)
+
+        val isDark = theme == Theme.Dark
+
+        val accentGradient = if (isDark) {
+            AcornGradient(
+                type = AcornGradientType.Linear(angleInDegrees = 96f),
+                colorStops = listOf(
+                    ColorStop(0f, colorResource(android.R.color.system_accent1_300)),
+                    ColorStop(0.5f, colorResource(android.R.color.system_accent2_300)),
+                    ColorStop(1f, colorResource(android.R.color.system_accent3_200)),
+                ),
+            )
+        } else {
+            AcornGradient(
+                type = AcornGradientType.Linear(angleInDegrees = 96f),
+                colorStops = listOf(
+                    ColorStop(0f, colorResource(android.R.color.system_accent1_400)),
+                    ColorStop(0.5f, colorResource(android.R.color.system_accent2_400)),
+                    ColorStop(1f, colorResource(android.R.color.system_accent3_300)),
+                ),
+            )
+        }
+
+        val tabOutlineGradient = if (isTabAreaGradient) {
+            if (isDark) {
+                AcornGradient(
+                    type = AcornGradientType.Linear(angleInDegrees = 96f),
+                    colorStops = listOf(
+                        ColorStop(0f, colorResource(android.R.color.system_accent1_200)),
+                        ColorStop(0.71f, colorResource(android.R.color.system_accent1_400)),
+                    ),
+                )
+            } else {
+                AcornGradient(
+                    type = AcornGradientType.Linear(angleInDegrees = 96f),
+                    colorStops = listOf(
+                        ColorStop(0f, colorResource(android.R.color.system_accent1_500)),
+                        ColorStop(0.71f, colorResource(android.R.color.system_accent1_700)),
+                    ),
+                )
+            }
+        } else {
+            AcornGradient(
+                type = AcornGradientType.Linear(angleInDegrees = 96f),
+                colorStops = listOf(
+                    ColorStop(0f, colorScheme.primary),
+                    ColorStop(1f, colorScheme.primary),
+                ),
+            )
+        }
+
+        val accentSubtleGradient = if (isTabAreaGradient) {
+            if (isDark) {
+                AcornGradient(
+                    type = AcornGradientType.Linear(angleInDegrees = 96f),
+                    colorStops = listOf(
+                        ColorStop(0f, colorResource(android.R.color.system_accent2_800).copy(alpha = 0.65f)),
+                        ColorStop(1f, colorResource(android.R.color.system_accent3_800).copy(alpha = 0.65f)),
+                    ),
+                )
+            } else {
+                AcornGradient(
+                    type = AcornGradientType.Linear(angleInDegrees = 96f),
+                    colorStops = listOf(
+                        ColorStop(0f, colorResource(android.R.color.system_accent2_100).copy(alpha = 0.65f)),
+                        ColorStop(1f, colorResource(android.R.color.system_accent3_100).copy(alpha = 0.65f)),
+                    ),
+                )
+            }
+        } else {
+            val flatBg = colorScheme.surfaceContainer
+            AcornGradient(
+                type = AcornGradientType.Linear(angleInDegrees = 96f),
+                colorStops = listOf(
+                    ColorStop(0f, flatBg),
+                    ColorStop(1f, flatBg),
+                ),
+            )
+        }
+
+        val baseScheme = if (isDark) darkAcornGradientScheme else lightAcornGradientScheme
+        baseScheme.copy(
+            accent = accentGradient,
+            accentSubtle = accentSubtleGradient,
+            tabOutline = tabOutlineGradient,
+        )
+    } else {
+        null
+    }
+
     val gradients: AcornGradientScheme = when (theme) {
-        Theme.Light -> lightAcornGradientScheme
-        Theme.Dark -> darkAcornGradientScheme
         Theme.Private -> privateAcornGradientScheme
+        Theme.Light -> dynamicGradients ?: lightAcornGradientScheme
+        Theme.Dark -> dynamicGradients ?: darkAcornGradientScheme
     }
 
     val tabGroupColors: TabGroupColorPalette = when (theme) {

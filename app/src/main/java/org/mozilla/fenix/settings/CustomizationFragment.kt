@@ -294,6 +294,7 @@ class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFrag
         val themeStyleCategory = findPreference<PreferenceCategory>(getString(R.string.pref_key_customization_category_theme_style))
         radioClassicTheme = requirePreference(R.string.pref_key_theme_style_classic)
         radioMaterialYouTheme = requirePreference(R.string.pref_key_theme_style_material_you)
+        val tabAreaGradientSwitch = findPreference<SwitchPreferenceCompat>(getString(R.string.pref_key_tab_area_gradient))
 
         if (SDK_INT < Build.VERSION_CODES.S) {
             themeStyleCategory?.isVisible = false
@@ -305,12 +306,21 @@ class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFrag
 
         radioClassicTheme.setCheckedWithoutClickListener(currentStyle == ThemeStyle.CLASSIC)
         radioMaterialYouTheme.setCheckedWithoutClickListener(currentStyle == ThemeStyle.MATERIAL_YOU)
+        tabAreaGradientSwitch?.isVisible = (currentStyle == ThemeStyle.MATERIAL_YOU)
+        tabAreaGradientSwitch?.isChecked = settings.isTabAreaGradientEnabled
+
+        tabAreaGradientSwitch?.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, newValue ->
+            settings.isTabAreaGradientEnabled = newValue as Boolean
+            activity?.recreate()
+            true
+        }
 
         addToRadioGroup(radioClassicTheme, radioMaterialYouTheme)
 
         radioClassicTheme.onClickListener {
             if (settings.themeStyle != ThemeStyle.CLASSIC) {
                 settings.themeStyle = ThemeStyle.CLASSIC
+                tabAreaGradientSwitch?.isVisible = false
                 activity?.recreate()
             }
         }
@@ -318,6 +328,7 @@ class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFrag
         radioMaterialYouTheme.onClickListener {
             if (settings.themeStyle != ThemeStyle.MATERIAL_YOU) {
                 settings.themeStyle = ThemeStyle.MATERIAL_YOU
+                tabAreaGradientSwitch?.isVisible = true
                 activity?.recreate()
             }
         }

@@ -827,6 +827,8 @@
     <string name="preference_theme_style_classic_summary">Original purple accents and slate surfaces</string>
     <string name="preference_theme_style_material_you">Material You (Dynamic)</string>
     <string name="preference_theme_style_material_you_summary">Match colors with wallpaper (Android 12+)</string>
+    <string name="preference_tab_area_gradient">Tab area gradient</string>
+    <string name="preference_tab_area_gradient_summary">Apply dynamic gradients to the tab strip and active tab indicators</string>
     <!-- Preference for customizing the home screen -->
     <string name="preferences_home_2">Homepage</string>
     <!-- Preference for customizing the app icon-->

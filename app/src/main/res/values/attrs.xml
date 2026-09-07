@@ -63,6 +63,9 @@
     <attr name="homepageGradientEnd" format="reference|color" />
     <attr name="homepageTabStripActive" format="reference|color" />
     <attr name="homepageTabStripInactive" format="reference|color" />
+    <attr name="progressBarStartColor" format="reference|color" />
+    <attr name="progressBarCenterColor" format="reference|color" />
+    <attr name="progressBarEndColor" format="reference|color" />
     <attr name="fillLinkFromClipboard" format="reference"/>
     <attr name="addOnPrivateBrowsingExteriorCircleBackground" format="reference"/>
     <attr name="awesomeBarIndicatorColor" format="reference|color"/>
