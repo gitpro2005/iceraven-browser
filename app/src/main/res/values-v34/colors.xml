@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dynamic tokens for Material You theme (Light Mode on Android 14+) -->
+    <!-- Maps canvas background and surface to Tone 98 (#F5FAFF) matching Compose components -->
+    <color name="my_dynamic_light_background">@android:color/system_background_light</color>
+    <color name="my_dynamic_light_surface">@android:color/system_surface_light</color>
+</resources>

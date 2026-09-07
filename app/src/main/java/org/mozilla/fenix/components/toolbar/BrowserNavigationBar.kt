@@ -7,6 +7,7 @@ package org.mozilla.fenix.components.toolbar
 import android.content.Context
 import android.view.Gravity
 import android.view.ViewGroup
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.collectAsState
@@ -93,11 +94,18 @@ class BrowserNavigationBar(
 
         if (uiState.displayState.navigationActions.isNotEmpty() && !isKeyboardVisible) {
             FirefoxTheme {
-                NavigationBar(
-                    actions = uiState.displayState.navigationActions,
-                    toolbarGravity = toolbarGravity,
-                    onInteraction = { toolbarStore.dispatch(it) },
-                )
+                val colors = MaterialTheme.colorScheme
+                MaterialTheme(
+                    colorScheme = colors.copy(
+                        surface = colors.background,
+                    ),
+                ) {
+                    NavigationBar(
+                        actions = uiState.displayState.navigationActions,
+                        toolbarGravity = toolbarGravity,
+                        onInteraction = { toolbarStore.dispatch(it) },
+                    )
+                }
             }
         }
     }

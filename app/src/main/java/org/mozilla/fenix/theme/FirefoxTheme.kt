@@ -58,9 +58,7 @@ fun FirefoxTheme(
 
     val lightDynamicScheme = if (isDynamic && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
         dynamicLightColorScheme(context).let {
-            val bg = colorResource(android.R.color.system_neutral1_10)
             it.copy(
-                background = bg,
                 surfaceBright = colorResource(android.R.color.system_neutral1_0),
                 tertiary = it.primary,
                 onTertiary = it.onPrimary,

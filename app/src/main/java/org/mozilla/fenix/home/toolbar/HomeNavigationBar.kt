@@ -65,7 +65,9 @@ class HomeNavigationBar(
                             onSurface = WallpaperTheme.onWallpaper,
                         )
                     } else {
-                        colors
+                        colors.copy(
+                            surface = colors.background,
+                        )
                     },
                 ) {
                     NavigationBar(
