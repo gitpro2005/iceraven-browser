@@ -39,8 +39,8 @@
         <item name="toolbarStartGradient">@color/my_dynamic_light_background</item>
         <item name="toolbarCenterGradient">@color/my_dynamic_light_background</item>
         <item name="toolbarEndGradient">@color/my_dynamic_light_background</item>
-        <item name="homepageGradientStart">@color/my_dynamic_light_background</item>
-        <item name="homepageGradientEnd">@color/my_dynamic_light_background</item>
+        <item name="homepageGradientStart">@android:color/system_accent2_50</item>
+        <item name="homepageGradientEnd">@android:color/system_accent2_10</item>
         <item name="homepageTabStripActive">@android:color/system_neutral1_0</item>
         <item name="homepageTabStripInactive">@android:color/system_neutral1_100</item>
         <item name="progressBarStartColor">@android:color/system_accent1_400</item>
