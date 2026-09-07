@@ -182,6 +182,7 @@ fun TabsTray(
 
     Scaffold(
         modifier = modifier.testTag(TabsTrayTestTag.TABS_TRAY),
+        containerColor = MaterialTheme.colorScheme.background,
         snackbarHost = {
             SnackbarHost(
                 hostState = snackbarHostState,

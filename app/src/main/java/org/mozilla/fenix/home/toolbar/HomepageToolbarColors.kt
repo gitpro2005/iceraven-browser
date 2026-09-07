@@ -35,7 +35,9 @@ fun homepageToolbarColors(
             outlineVariant = colorResource(R.color.homepage_tab_edge_to_edge_toolbar_outline),
         )
 
-        else -> colors
+        else -> colors.copy(
+            surface = colors.background,
+        )
     }
 }
 

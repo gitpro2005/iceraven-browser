@@ -286,7 +286,7 @@ class TabManagementFragment : Fragment() {
 
             FirefoxTheme(theme = TabManagerThemeProvider(selectedPage = state.selectedPage).provideTheme()) {
                 val statusBarColor = MaterialTheme.colorScheme.surfaceContainerHigh
-                val navigationBarColor = MaterialTheme.colorScheme.surface
+                val navigationBarColor = MaterialTheme.colorScheme.background
                 val transitionColor = MaterialTheme.colorScheme.surfaceContainer
 
                 val tabTrayVisibilityState = remember {
